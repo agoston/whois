@@ -15,13 +15,13 @@ public class RestClientUtils {
         // do not instantiate
     }
 
-    // encode a query parameter
-    // DO NOT use to encode form parameters
+    // encode a path parameter
+    // DO NOT use to encode form parameters (or query parameters)
     public static final String encode(final String param) {
         return UrlEscapers.urlPathSegmentEscaper().escape(param);
     }
 
-    // encode a list of query parameters
+    // encode a list of path parameters
     public static final List<String> encode(final List<String> params) {
         return Lists.transform(params, new Function<String, String>() {
             @Override

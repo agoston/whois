@@ -14,8 +14,9 @@ public class SyncUpdateUtilsTest {
         assertThat(SyncUpdateUtils.encode("{}"), is("%7B%7D"));
         assertThat(SyncUpdateUtils.encode("{"), is("%7B"));
         assertThat(SyncUpdateUtils.encode("{%7D"), is("%7B%257D"));
-        assertThat(SyncUpdateUtils.encode("a b c"), is("a+b+c"));
-        assertThat(SyncUpdateUtils.encode("a+b+c"), is("a%2Bb%2Bc"));
+        assertThat(SyncUpdateUtils.encode("a b c"), is("a+b+c"));           // IS encoded (as query param)
+        assertThat(SyncUpdateUtils.encode("a+b+c"), is("a%2Bb%2Bc"));       // IS encoded (as query parameter) - plus is not a valid character in the query part of the URL
+        assertThat(SyncUpdateUtils.encode("straße"), is("stra%C3%9Fe"));            // UTF-8 encoded
     }
 
 }
